@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How controllers are specified in the Swagger file</title>
+  <meta name="description" content="Documentation site for Apigee API Studio.
+">
+
+
+  
+  
+
+  <link href="../css/main.css" rel="stylesheet" />
+  <!--  <link rel="stylesheet" href="/css/main.css"> -->
+  <link rel="canonical" href="http://apistudio.io/pages/download.html">
+  <link rel="alternate" type="application/rss+xml" title="Apigee API Studio" href="http://apistudio.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="http://apistudio.io/">Apigee API Studio</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+          <a class="page-link" href="../index.html">Contents</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">How controllers are specified in the Swagger file</h1>
+  </header>
+
+  <article class="post-content">
+    <p>API Studio makes it easy for you to model and try out your API. When you’re in the Studio, your API calls return simulated responses. When you’re ready to implement the “business logic” of your API, a good approach is to download your API as a Node.js project. Then, you can implement “controller” files in Node.js to handle whatever work your API needs to do, such as making backend target requests.</p>
+
+<h1 id="what-is-a-controller">What is a controller?</h1>
+
+<p>A controller is a Node.js file that executes when specified API paths are called.</p>
+
+<p>In the default “hello, world” API Studio project, you can see immediately how the controller is specified on the <code>/hello</code> path by looking at the project’s Swagger file:</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">paths</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">/hello</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">x-swagger-router-controller</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">hello_world</span>
+        <span class="l-Scalar-Plain">get</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Returns greetings to the caller</span>
+          <span class="l-Scalar-Plain">operationId</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">hello</span></code></pre></div>
+
+<p>The extension <code>x-swagger-router-controller</code> specifies the name of the Node.js controller file associated with the <code>/hello</code> path. And the <code>operationId</code> specifies the name of a function to call in that file when <code>/hello</code> is called.</p>
+
+<h1 id="download-to-a-nodejs-project">Download to a Node.js project</h1>
+
+<p>In API Studio, select <strong>Download Node.js Project</strong> from the Project menu.</p>
+
+<p>Your project is saved on your file system as a Node.js <a href="https://www.npmjs.com/package/swagger">swagger</a> project.</p>
+
+<p>The downloaded project is based on the npm <code>swagger</code> module. The downloaded <code>swagger</code> project has a well-defined structure and includes a built-in Express server, a command-line interface, an editor (Swagger Editor), and more.</p>
+
+<p>Under the /api directory, you’ll find the <code>swagger</code> folder. This is where your project’s Swagger definition file lives. It’s called <code>api/swagger/swagger.yaml</code>. There’s also an <code>api/controller</code> folder. This is where you’ll implement the API’s business logic – in Node.js.</p>
+
+<h1 id="next-steps-learn-about-npm-swagger">Next steps: Learn about npm swagger</h1>
+
+<p>To set up your local environment, you need to install the <code>swagger</code> npm module:</p>
+
+<p><code>npm -g install swagger</code></p>
+
+<p>With this module installed, you’re ready to implement and test controllers on your local system.</p>
+
+<p>Read more about using the <code>swagger</code> command-line interface and implementing controllers in the <a href="https://github.com/theganyo/swagger-node/tree/master/docs">swagger-node documentation</a>.</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+  <p> <a href="https://community.apigee.com"><img border="0" alt="Ask questions on the Apigee Community" src="../images/apigee-community.png"></a></p>
+
+  </div>
+</footer>
+
+
+  </body>
+
+</html>
